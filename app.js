@@ -10,10 +10,10 @@ app.use(morgan('combined'))
 app.use(cors());
 
 // Sign up Router
-app.use('/users', userRouter)
+app.use('/users/new', userRouter)
 
 // Log in Router
-app.use('/auth', authRouter)
+app.use('/users/login', authRouter)
 
 export default app
 
