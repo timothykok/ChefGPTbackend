@@ -7,13 +7,18 @@ import { filter } from "../utils/common.js"
 const router = express.Router()
 
 router.post('/', async (req, res) => {
-  const data = req.body
+  const { passwordConfirm, ...data } = req.body
 
   const validationErrors = validateUser(data)
 
   if (Object.keys(validationErrors).length != 0) return res.status(400).send({
     error: validationErrors
   })
+
+  if (data.password !== passwordConfirm) {
+
+  }
+
 
   data.password = bcrypt.hashSync(data.password, 8);
 
