@@ -29,9 +29,8 @@ router.post("/fetch", async (req, res) => {
 // Delete recipe from calender
 router.post("/delete", async (req, res) => {
   const data = req.body;
-  const deleteUsers = await prisma.calendar.deleteMany({})
-
-
+  const deleteCalendar = await prisma.user.deleteMany({})
+  console.log("done")
   return res.status(200);
 });
 
