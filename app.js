@@ -1,6 +1,7 @@
 import express from "express"
 import userRouter from "./src/controllers/users.controllers.js"
 import authRouter from "./src/controllers/auth.controllers.js"
+import calendarRouter from "./src/controllers/calendar.controllers.js"
 import morgan from "morgan" 
 import cors from "cors";
 
@@ -14,6 +15,9 @@ app.use('/users/new', userRouter)
 
 // Log in Router
 app.use('/users/login', authRouter)
+
+// Calender marking Router
+app.use('/calendar', calendarRouter)
 
 export default app
 
