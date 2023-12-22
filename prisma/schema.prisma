@@ -21,12 +21,12 @@ model User {
 
 model Recipe {
   id     Int     @id @default(autoincrement())
-  url    String
+  url    String  @unique
   userId Int?
   user   User?   @relation(fields: [userId], references: [id])
 }
 
-}
+
 
 model Calendar {
   id        Int     @id @default(autoincrement())

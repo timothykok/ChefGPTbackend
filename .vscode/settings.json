@@ -1,0 +1,13 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5444,
+            "driver": "PostgreSQL",
+            "name": "chef",
+            "database": "chef-gpt",
+            "username": "chef"
+        }
+    ]
+}
