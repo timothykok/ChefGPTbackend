@@ -4,6 +4,7 @@ import prisma from "../utils/prisma.js";
 import { validateLogin } from "../validators/auth.js";
 import { filter } from "../utils/common.js";
 import { signAccessToken } from "../utils/jwt.js";
+import auth from "../middlewares/auth.js";
 
 const router = express.Router();
 
@@ -45,5 +46,9 @@ router.post("/", async (req, res) => {
 
     return res.json({ result });
 });
+
+router.post("/authenticate",auth, async (req, res) => {
+  return res.json({'Authentication': 'success'})
+  });
 
 export default router;
