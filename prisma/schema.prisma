@@ -26,7 +26,7 @@ model Recipe {
   user   User?   @relation(fields: [userId], references: [id])
 }
 
-}
+
 
 model Calendar {
   id        Int     @id @default(autoincrement())
@@ -34,7 +34,6 @@ model Calendar {
   date      String
   meal      String
   name      String
-  kcal      Int
   image     String
 }
 
