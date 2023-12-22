@@ -11,7 +11,7 @@ router.post("/add", async (req, res) => {
     data,
   });
 
-  return res.status(200);
+  return res.json({"message" : "success"});
 });
 
 // Fetch recipe from calendar by user
