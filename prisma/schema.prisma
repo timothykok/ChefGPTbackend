@@ -12,10 +12,20 @@ datasource db {
 }
 
 model User {
-  id       Int     @id @default(autoincrement())
+  id       Int      @id @default(autoincrement())
   name     String?
   email    String  @unique
   password String?
+  recipes  Recipe[]
+}
+
+model Recipe {
+  id     Int     @id @default(autoincrement())
+  url    String
+  userId Int?
+  user   User?   @relation(fields: [userId], references: [id])
+}
+
 }
 
 model Calendar {
@@ -27,3 +37,4 @@ model Calendar {
   kcal      Int
   image     String
 }
+
