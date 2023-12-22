@@ -16,7 +16,6 @@ router.post("/", async (req, res) => {
       error: validationErrors,
     });
 
-  try {
     const user = await prisma.user.findUnique({
       where: {
         email: data.email,
@@ -36,7 +35,6 @@ router.post("/", async (req, res) => {
       });
     }
 
-
     const userFiltered = filter(user, "id", "name", "email");
     const accessToken = await signAccessToken(userFiltered);
 
@@ -46,12 +44,6 @@ router.post("/", async (req, res) => {
     };
 
     return res.json({ result });
-  } catch (error) {
-    console.error("Error:", error);
-    return res.status(500).send({
-      error: "Something went wrong",
-    });
-  }
 });
 
 export default router;

@@ -6,8 +6,8 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
   shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
@@ -25,3 +25,16 @@ model Recipe {
   userId Int?
   user   User?   @relation(fields: [userId], references: [id])
 }
+
+}
+
+model Calendar {
+  id        Int     @id @default(autoincrement())
+  userID    Int
+  date      String
+  meal      String
+  name      String
+  kcal      Int
+  image     String
+}
+
