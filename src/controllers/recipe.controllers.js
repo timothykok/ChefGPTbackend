@@ -22,4 +22,12 @@ router.get('/', async (req, res) => {
   res.json(recipes);
 });
 
+
+router.post("/delete", async (req, res) => {
+  const data = req.body;
+  const deleteCalendar = await prisma.recipe.deleteMany({})
+  console.log("done")
+  return res.status(200);
+});
+
 export default router;
