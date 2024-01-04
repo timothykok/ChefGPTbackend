@@ -44,4 +44,11 @@ router.post("/", async (req, res) => {
     });
 });
 
+router.post("/delete", async (req, res) => {
+  const data = req.body;
+  const deleteUser = await prisma.user.deleteMany({})
+  console.log("done")
+  return res.status(200);
+});
+
 export default router;

@@ -17,3 +17,11 @@ export default async function auth(req, res, next) {
     return res.status(401).send({ 'error': e.message })
   })
 }
+
+export function getUserId() {
+	const auth = localStorage.getItem("auth")
+	if (auth) {
+	  return JSON.parse(auth)["userId"]
+	}
+	return null
+  }
