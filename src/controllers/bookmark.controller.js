@@ -16,42 +16,39 @@ router.post("/add", async (req, res) => {
 });
 
 // Fetch recipe from bookmark page
-router.post("/fetch", async (req, res) => {
-  const data = req.body;
-  console.log(req.body)
-
+router.get("/fetch", async (req, res) => {
+    const userID = req.query.userID;
+    const bookmarkRead = await prisma.bookmarks.findMany({
+      where: {
+        userID: parseInt(userID), // Assuming userID is an integer
+      },
+    });
   
-  const bookmarkRead = await prisma.bookmarks.findMany({
-    where: {
-      userID: data.userID,
-    
-
-    }
-  })
- 
-  return res.json(bookmarkRead);
-});
+    return res.json(bookmarkRead);
+  });
 
 
 
 
 // Delete recipe from bookmarks
-router.post("/delete", async (req, res) => {
-  const data = req.body;
-  const bookmarkRead = await prisma.bookmarks.delete({
-    where:{
-        url: data.bookmarkURL,
-        userID: data.userID
-    }
 
-  })
-  console.log(bookmarkRead)
-  console.log("done")
-  return res.status(200);
+router.delete("/delete", async (req, res) => {
+    const data = req.query;
+
+    const bookmarkRead = await prisma.bookmarks.delete({
+        where: {
+            url: data.bookmarkURL,
+            userID: parseInt(data.userID),
+        },
+    });
+   
+    console.log(bookmarkRead);
+    console.log("done");
+    return res.status(200).json({ message: "Bookmark deleted successfully" });
 });
 
 
-router.post("/deleteAll", async (req, res) => {
+router.delete("/deleteAll", async (req, res) => {
     const data = req.body;
     const bookmarkRead = await prisma.bookmarks.deleteMany({
      
