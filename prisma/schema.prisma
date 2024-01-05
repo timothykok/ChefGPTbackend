@@ -12,20 +12,13 @@ datasource db {
 }
 
 model User {
-  id       Int      @id @default(autoincrement())
-  name     String?
-  email    String  @unique
-  password String?
-  recipes  Recipe[]
-}
+  id          Int      @id @default(autoincrement())
+  name        String?
+  email       String  @unique
+  password    String?
+  bookmarks   Bookmarks[]
 
-model Recipe {
-  id     Int     @id @default(autoincrement())
-  url    String  @unique
-  userId Int?
-  user   User?   @relation(fields: [userId], references: [id])
 }
-
 
 
 model Calendar {
@@ -37,3 +30,12 @@ model Calendar {
   image     String
 }
 
+model Bookmarks {
+  id          Int     @id @default(autoincrement())
+  userID      Int   
+  user        User  @relation(fields: [userID], references: [id])  
+  url         String  @unique
+  name        String 
+  image       String
+  
+}
